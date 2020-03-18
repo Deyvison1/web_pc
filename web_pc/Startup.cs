@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using web_pc.Data;
+using web_pc.Service;
 
 namespace web_pc
 {
@@ -40,6 +41,8 @@ namespace web_pc
                     options.UseMySql(Configuration.GetConnectionString("web_pcContext"),
                         builder => builder.MigrationsAssembly("web_pc")
                     ));
+
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
