@@ -37,7 +37,9 @@ namespace web_pc
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<web_pcContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("web_pcContext")));
+                    options.UseMySql(Configuration.GetConnectionString("web_pcContext"),
+                        builder => builder.MigrationsAssembly("web_pc")
+                    ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
